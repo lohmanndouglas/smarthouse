@@ -32,7 +32,7 @@ Licença.
 
 	Licença <license.rst>
 
-Casa inteligentes e Internet das Coisas
+Casa inteligente e Internet das Coisas
 =======================================
 
 	Escrever
