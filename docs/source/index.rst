@@ -32,18 +32,62 @@ Licença.
 
 	Licença <license.rst>
 
-Casa inteligente e Internet das Coisas
+Casa inteligente 
 =======================================
 
-	Escrever
+	- escrever introdução
 
-
-Scrum Board
+Internet das Coisas
 =======================================
 
-Disponível em:
-	https://waffle.io/lohmanndouglas/smarthouse/join
+	- escrever introdução 
 
+Processo de desenvolvimento de software
+=======================================
+
+	- engenharia de software
+	- requisitos
+	- scrum 
+
+		Scrum board disponível em:
+		https://waffle.io/lohmanndouglas/smarthouse/join
+
+	- diagrama de classes
+
+Hardware
+=======================================
+	
+	- sistemas embarcados
+	- microcontroladores
+	- sensores
+	- atuadores
+
+Arduino 
+=======================================
+
+	- Hardware
+	- IDE
+	- MySensors
+
+Estrutura IoT
+=======================================
+ 
+	 - imagem
+	 - nó gateway
+	 - nós finas
+	 - nó repetidor 
+
+Exemplo
+=======================================
+
+.. toctree::
+   :maxdepth: 1
+
+	Exemplo <primeiro_exemplo.rst>
+
+
+Como contribuir com esse projeto? 
+=======================================
 
 
 .. Indices and tables
