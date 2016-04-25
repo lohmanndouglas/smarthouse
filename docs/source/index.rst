@@ -72,10 +72,11 @@ Arduino
 Estrutura IoT
 =======================================
  
-	 - imagem
-	 - nó gateway
-	 - nós finas
-	 - nó repetidor 
+ .. toctree::
+   :maxdepth: 1
+
+   Estrutura Iot <estruturaIoT.rst>
+
 
 Exemplo
 =======================================
