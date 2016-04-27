@@ -148,6 +148,8 @@
 </div>
 <div class="section" id="no-gateway">
 <h1>Nó Gateway<a class="headerlink" href="#no-gateway" title="Permalink to this headline">¶</a></h1>
+<p>O gateway atua na ligação entre o controlador e rede de rádios. Ele traduz as mensagens do rádio para um protocolo que pode ser entendido por um controlador.</p>
+<p>Na biblioteca MySensors exitem tres implementações de Gateway, o Ethernet Gateway, SerialGateway e MQTTGateway. Nesse material vamos utilizar o SerialGateway pela facilidade de implementação e também pela compatibilidade com o controlador escolhido.</p>
 </div>
 <div class="section" id="no-sensor">
 <h1>Nó Sensor<a class="headerlink" href="#no-sensor" title="Permalink to this headline">¶</a></h1>
@@ -157,9 +159,20 @@
 </div>
 <div class="section" id="no-repetidor">
 <h1>Nó Repetidor<a class="headerlink" href="#no-repetidor" title="Permalink to this headline">¶</a></h1>
+<p>Esse nó só é necessário quando os nós sensores e gateway não conseguem se comunicar, devido à distancia em que estão localizados, por esse motivo não está representado na Figura~ref{fig:iot}. Esse nó tem como função repetir as dados para outros nós a fim de aumentar a distancia de comunicação entre os nós. Em muitas aplicações esse nó não esta presente.</p>
 </div>
 <div class="section" id="no-controlador">
 <h1>Nó Controlador<a class="headerlink" href="#no-controlador" title="Permalink to this headline">¶</a></h1>
+<p>O controlador pode realizar as seguintes funções:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Enviar parâmetros de configuração para os sensores na rede de rádio (tempo e identificadores de sensores únicos);</li>
+<li>Acompanhar os dados mais recentes enviados pelos sensores e atuadores;</li>
+<li>Fornecer informações de status de volta para sensores e atuadores; por exemplo o estado atual (on / off / loadLevel) para uma luz;</li>
+<li>Fornecer controles de interface do usuário para atuadores;</li>
+<li>Executa horários predefinidos ou cenas; por exemplo. ao pôr do sol acender as luzes do jardim.</li>
+</ul>
+</div></blockquote>
 </div>
 
 

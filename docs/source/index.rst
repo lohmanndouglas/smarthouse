@@ -28,7 +28,7 @@ publicada pela Fundação do Software Livre (FSF); na versão 3 da
 Licença.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
 	Licença <license.rst>
 
@@ -40,7 +40,12 @@ Casa inteligente
 Internet das Coisas
 =======================================
 
-	- escrever introdução 
+A Internet pode ser dividida em três fases. A primeira fase é a Internet como uma rede de computadores. A segunda fase a Internet pode ser considerada uma rede de pessoas e comunidades. Atualmente estamos vivendo a evolução para terceira fase, a Internet das Coisas (do inglês, Internet of Things - IoT). Nesta fase a rede passa a interligar vários tipos de objetos e dispositivos inteligentes do nosso cotidiano que vão interagir entre si e conosco.
+
+.. toctree::
+   :maxdepth: 2
+
+	Internet das Coisas <internetDasCoisas.rst>
 
 Processo de desenvolvimento de software
 =======================================
@@ -73,7 +78,7 @@ Estrutura IoT
 =======================================
  
  .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    Estrutura Iot <estruturaIoT.rst>
 
@@ -82,7 +87,7 @@ Exemplo
 =======================================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
 	Exemplo <primeiro_exemplo.rst>
 

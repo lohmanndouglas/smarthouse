@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; smart-house 0.0.1 documentation</title>
+  <title>Estrutura da Internet das Coisas &mdash; smart-house 0.0.1 documentation</title>
   
 
   
@@ -31,7 +30,9 @@
   
 
   
-    <link rel="top" title="smart-house 0.0.1 documentation" href="index.html"/> 
+    <link rel="top" title="smart-house 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Estrutura da Internet das Coisas" href="estruturaIoT.html"/>
+        <link rel="prev" title="Licença" href="license.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -84,8 +85,8 @@
 <li class="toctree-l1"><a class="reference internal" href="license.html">Licença</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html#contato">Contato</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="internetDasCoisas.html">     Internet das Coisas</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">     Internet das Coisas</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="estruturaIoT.html">Estrutura da Internet das Coisas</a></li>
@@ -119,7 +120,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -127,9 +128,11 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li></li>
+    <li>Estrutura da Internet das Coisas</li>
       <li class="wy-breadcrumbs-aside">
         
+          
+            <a href="_sources/internetDasCoisas.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -139,17 +142,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="estrutura-da-internet-das-coisas">
+<h1>Estrutura da Internet das Coisas<a class="headerlink" href="#estrutura-da-internet-das-coisas" title="Permalink to this headline">¶</a></h1>
+<p>A Internet pode ser dividida em três fases. A primeira fase é a Internet como uma rede de computadores. A segunda fase a Internet pode ser considerada uma rede de pessoas e comunidades. Atualmente estamos vivendo a evolução para terceira fase, a Internet das Coisas (do inglês, Internet of Things - IoT). Nesta fase a rede passa a interligar vários tipos de objetos e dispositivos inteligentes do nosso cotidiano que vão interagir entre si e conosco.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/iot.png"><img alt="map to buried treasure" src="_images/iot.png" style="width: 482.0px; height: 304.0px;" /></a>
+<p class="caption"><span class="caption-text">Figura 1: Diagrama de blocos de uma “coisa” no contexto de IoT.</span></p>
+</div>
+<p>A Figura 1 mostra o diagrama de blocos que representa as partes e as características de uma coisa (thing) capaz de integrar uma IoT. Independentemente de sua funcionalidade, cada coisa sempre “vive” em um determinado ambiente e terá um processador, um transceptor de comunicação e uma fonte de energia [3].</p>
+<p>Desta forma, é notável que existem alguns requisitos para um dispositivo ou aplicações IoT. Os elementos esperados são:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Computação:  ter capacidades de processamento e memória que lhes permitam implementar desde a mais simples  lógica até complexos algoritmos.</li>
+<li>Comunicação: ter pelo menos um meios de comunicação, preferencialmente sem fios, adaptado às necessidades de aplicação, como consumo de energia e taxa de transferência de dados.</li>
+<li>Sensores: coletam e processam as informações do mundo real em contextos ambientais. A informação a partir do contexto ambiental é útil para criar uma imagem instantânea do que está acontecendo em cada momento.</li>
+<li>Atuadores: fornecem a capacidade de agir sobre o ambiente. Aplicações IoT podem ter de agir sobre o meio ambiente, quando o usuário não é capaz de controlar,  não ter conhecimento de situações específicas que necessitem de acionamento ou mesmo simplesmente porque não está presente no ambiente.</li>
+<li>Interfaces homem-máquina: incluindo meios de interação de entrada como chaves e botões e saída como leds e display, proporcionando ao usuário informações relevantes sobre eventos.</li>
+<li>Fonte de energia: qualquer coisa eletrônica precisa de energia para funcionar, normalmente uma bateria.</li>
+</ul>
+</div></blockquote>
 </div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="estruturaIoT.html" class="btn btn-neutral float-right" title="Estrutura da Internet das Coisas" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="license.html" class="btn btn-neutral" title="Licença" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
