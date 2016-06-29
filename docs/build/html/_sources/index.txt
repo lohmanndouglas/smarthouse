@@ -77,19 +77,46 @@ Arduino
 Estrutura IoT
 =======================================
  
+ A seguir é descrito uma estrutura para IoT, composta pelos componentes de hardware e software
+ citados nos tópicos anteriores. 
+
  .. toctree::
    :maxdepth: 2
 
    Estrutura Iot <estruturaIoT.rst>
 
 
-Exemplo
+Implementação da Estrutura IoT
 =======================================
+ 
+Os próximos tópicos descrevem a implementação básica da infraestrutura IoT.
+
+ .. toctree::
+   :maxdepth: 2
+
+   Implementação Iot <implementacaoIoT.rst>
+
+Conhecida a implementação da estrutura básica IoT podemos facilmente adaptar essa estrutura para o contexto
+de casas inteligentes. Podemos utilizando a plataforma Waffle.io descrever os requisitos desejaveis em uma casa
+inteligente no formato de estórias e assim realizarmos a construção do sistema. O próximo tópico apresenta alguns exemplos para auxiliar na implementação de requisitos desejaveis em uma casa inteligente.  
+
+
+Estrutura da Casa Inteligente
+=======================================
+
+
+O contexto deste projeto, pode ser muitas vezes considerado amplo, pois o mesmo gera aplicações em praticamente qualquer espaço e necessidade apresentada em uma casa. Para que fosse possível obter resultados, foi necessário focar em alguns objetivos mais específicos e, a partir destes, criar soluções com a utilização de arduíno e outros tipos de componentes.
+
+	- inserir planta da casa
+	- inserir planta da casa com sensores
+	- estorias
+
+Abaixo temos alguns exemplos de estórias ja implementadas. 
 
 .. toctree::
    :maxdepth: 2
 
-	Exemplo <primeiro_exemplo.rst>
+	Exemplo<primeiro_exemplo.rst>
 
 
 Como contribuir com esse projeto? 

@@ -32,7 +32,7 @@
   
     <link rel="top" title="smart-house 0.0.1 documentation" href="index.html"/>
         <link rel="next" title="Exemplo" href="primeiro_exemplo.html"/>
-        <link rel="prev" title="Licença" href="license.html"/> 
+        <link rel="prev" title="Estrutura da Internet das Coisas" href="internetDasCoisas.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -85,6 +85,9 @@
 <li class="toctree-l1"><a class="reference internal" href="license.html">Licença</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html#contato">Contato</a></li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="internetDasCoisas.html">     Internet das Coisas</a></li>
+</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">Estrutura da Internet das Coisas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#no-gateway">Nó Gateway</a></li>
@@ -92,6 +95,8 @@
 <li class="toctree-l1"><a class="reference internal" href="#no-atuador">Nó Atuador</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#no-repetidor">Nó Repetidor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#no-controlador">Nó Controlador</a></li>
+</ul>
+<ul class="simple">
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="primeiro_exemplo.html">     Exemplo</a></li>
@@ -141,10 +146,15 @@
             
   <div class="section" id="estrutura-da-internet-das-coisas">
 <h1>Estrutura da Internet das Coisas<a class="headerlink" href="#estrutura-da-internet-das-coisas" title="Permalink to this headline">¶</a></h1>
+<p>Uma característica essencial em IoT é a capacidade dos dispositivos se comunicar, direta ou indiretamente, com a Internet. Uma arquitetura típica para isto consiste na construção de uma rede de dispositivos IoT com uma unidade de controle como dispositivo central, sensores que coletam informação do meio ambiente, atuadores e módulos de comunicação. O dispositivo central, neste caso, é encarregado da comunicação com a Internet.</p>
+<p>A unidade de controle, no contexto de internet das Coisas, são dispositivos que utilizam um   microcontrolador, o qual é responsável por processar informações. Na oficina utilizamos a plataforma de hardware aberto Arduino, pois este contém uma vasta quantidade de exemplos disponíveis e possui uma comunidade ativa para suporte.</p>
+<p>Os módulos de comunicação são responsáveis pela comunicação entre dispositivos da rede IoT. Alguns dos módulos avaliados foram os módulos WiFi, Bluetooth, nRF24l01 e ZigBee. Um fator importante na escolha do módulo é a existência de uma framework para dar suporte a implementação da rede. Considerando tais fatores, nesta implementação foi escolhido o módulo nRF24l01. Ele é um chip transceptor de baixo custo, projetado para aplicações sem fio, de baixa potencia e suportado por um framework compatível com Arduino, chamado de MySensors.</p>
+<p>MySensors é uma API que possibilita a construção de uma rede de sensores de baixo custo. Além disso, essa API fornece ferramentas para gerenciar e analisar os dados dos sensores. A biblioteca facilita a implementação por possuir muitos exemplos e abstrair protocolos de comunicação entre os nós da rede.</p>
 <div class="figure align-center" id="id1">
 <a class="reference internal image-reference" href="_images/InternetDasCoisas.png"><img alt="map to buried treasure" src="_images/InternetDasCoisas.png" /></a>
-<p class="caption"><span class="caption-text">Estrutura da Internet das Coisas</span></p>
+<p class="caption"><span class="caption-text">Figura 2:Estrutura da Internet das Coisas</span></p>
 </div>
+<p>Utilizando a biblioteca e as plataformas descritas, é possível configurar uma infraestrutura para a rede IoT, como ilustra a Figura 2. A rede implementada  basicamente é constituída por três componentes:  controlador, gateway e nós finais, que são nós sensores e atuadores. Os nós sensores e atuadores são responsáveis pela interação com o ambiente, seja pela coleta de informações por meio de sensores, emissão de sinais de alerta ou ativação de certos dispositivos por meio de atuadores, por exemplo o ar condicionado ou uma lâmpada.</p>
 </div>
 <div class="section" id="no-gateway">
 <h1>Nó Gateway<a class="headerlink" href="#no-gateway" title="Permalink to this headline">¶</a></h1>
@@ -153,16 +163,19 @@
 </div>
 <div class="section" id="no-sensor">
 <h1>Nó Sensor<a class="headerlink" href="#no-sensor" title="Permalink to this headline">¶</a></h1>
+<p>blabla</p>
 </div>
 <div class="section" id="no-atuador">
 <h1>Nó Atuador<a class="headerlink" href="#no-atuador" title="Permalink to this headline">¶</a></h1>
+<p>blabla</p>
 </div>
 <div class="section" id="no-repetidor">
 <h1>Nó Repetidor<a class="headerlink" href="#no-repetidor" title="Permalink to this headline">¶</a></h1>
-<p>Esse nó só é necessário quando os nós sensores e gateway não conseguem se comunicar, devido à distancia em que estão localizados, por esse motivo não está representado na Figura~ref{fig:iot}. Esse nó tem como função repetir as dados para outros nós a fim de aumentar a distancia de comunicação entre os nós. Em muitas aplicações esse nó não esta presente.</p>
+<p>Esse nó só é necessário quando os nós sensores e gateway não conseguem se comunicar, devido à distancia em que estão localizados, por esse motivo não está representado na Figura 2. Esse nó tem como função repetir as dados para outros nós a fim de aumentar a distancia de comunicação entre os nós. Em muitas aplicações esse nó não esta presente.</p>
 </div>
 <div class="section" id="no-controlador">
 <h1>Nó Controlador<a class="headerlink" href="#no-controlador" title="Permalink to this headline">¶</a></h1>
+<p>O controlador é responsável pela comunicação com a Internet. Na Figura 2 podemos observar que o controlador está diretamente conectado ao gateway e à Internet. Diferentemente dos outros nós, este componente da rede necessita de maior poder de processamento e deve ser implementado em hardware mais robusto, como a Raspberry Pi, BeagleBone ou até mesmo um desktop.</p>
 <p>O controlador pode realizar as seguintes funções:</p>
 <blockquote>
 <div><ul class="simple">
@@ -185,7 +198,7 @@
         <a href="primeiro_exemplo.html" class="btn btn-neutral float-right" title="Exemplo" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="license.html" class="btn btn-neutral" title="Licença" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="internetDasCoisas.html" class="btn btn-neutral" title="Estrutura da Internet das Coisas" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

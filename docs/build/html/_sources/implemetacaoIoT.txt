@@ -1,0 +1,31 @@
+Implementação da Estrutura da Internet das Coisas
+=================================================
+
+dasdasdasdasdasdasdasdasdasdasd
+
+
+Nó Gateway 
+===========
+
+blabla
+
+Nó Sensor
+===========
+
+blabla
+
+Nó Atuador
+===========
+
+blabla
+
+Nó Repetidor
+============
+
+blabla
+
+
+Nó Controlador
+==============
+
+blalbva
