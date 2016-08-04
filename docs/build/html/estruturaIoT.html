@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Estrutura da Internet das Coisas &mdash; smart-house 0.0.1 documentation</title>
+  <title>Estrutura da Internet das Coisas &mdash; smart-house 0.0.2 documentation</title>
   
 
   
@@ -30,8 +30,8 @@
   
 
   
-    <link rel="top" title="smart-house 0.0.1 documentation" href="index.html"/>
-        <link rel="next" title="Exemplo" href="primeiro_exemplo.html"/>
+    <link rel="top" title="smart-house 0.0.2 documentation" href="index.html"/>
+        <link rel="next" title="Implementação da Estrutura da Internet das Coisas" href="implementacaoIoT.html"/>
         <link rel="prev" title="Estrutura da Internet das Coisas" href="internetDasCoisas.html"/> 
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.0.1
+                0.0.2
               </div>
             
           
@@ -96,7 +96,13 @@
 <li class="toctree-l1"><a class="reference internal" href="#no-repetidor">Nó Repetidor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#no-controlador">Nó Controlador</a></li>
 </ul>
-<ul class="simple">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html">Implementação da Estrutura da Internet das Coisas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-gateway">Implementação Nó Gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-sensor">Implementação Nó Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-atuador">Implementação Nó Atuador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-repetidor">Implementação Nó Repetidor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-controlador">Implementação Nó Controlador</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="primeiro_exemplo.html">     Exemplo</a></li>
@@ -163,11 +169,11 @@
 </div>
 <div class="section" id="no-sensor">
 <h1>Nó Sensor<a class="headerlink" href="#no-sensor" title="Permalink to this headline">¶</a></h1>
-<p>blabla</p>
+<p>Este tipo de nó é responsavel pela leitura de dados do meio externo e realizar a comunicação com o arduino. Sensor de temperatura, umidade e luminosidade são alguns exemplos de sensores.</p>
 </div>
 <div class="section" id="no-atuador">
 <h1>Nó Atuador<a class="headerlink" href="#no-atuador" title="Permalink to this headline">¶</a></h1>
-<p>blabla</p>
+<p>Nós atuadores são aqueles que realizam alguma ação no ambiente, um servo motor por exemplo é um nó atuador, podendo ser utilzado para abir uma janela na casa ou mover algum objeto.</p>
 </div>
 <div class="section" id="no-repetidor">
 <h1>Nó Repetidor<a class="headerlink" href="#no-repetidor" title="Permalink to this headline">¶</a></h1>
@@ -195,7 +201,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="primeiro_exemplo.html" class="btn btn-neutral float-right" title="Exemplo" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="implementacaoIoT.html" class="btn btn-neutral float-right" title="Implementação da Estrutura da Internet das Coisas" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="internetDasCoisas.html" class="btn btn-neutral" title="Estrutura da Internet das Coisas" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -207,7 +213,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Douglas Lohmann.
+        &copy; Copyright 2016, Douglas Lohmann, Cezar Bertelli.
 
     </p>
   </div>
@@ -229,7 +235,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.1',
+            VERSION:'0.0.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

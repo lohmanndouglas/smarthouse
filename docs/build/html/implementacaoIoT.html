@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Implementação da Estrutura da Internet das Coisas &mdash; smart-house 0.0.1 documentation</title>
+  <title>Implementação da Estrutura da Internet das Coisas &mdash; smart-house 0.0.2 documentation</title>
   
 
   
@@ -30,8 +30,8 @@
   
 
   
-    <link rel="top" title="smart-house 0.0.1 documentation" href="index.html"/>
-        <link rel="next" title="Exemplo" href="primeiro_exemplo.html"/>
+    <link rel="top" title="smart-house 0.0.2 documentation" href="index.html"/>
+        <link rel="next" title="Sensor de Temperatura e Umidade - DTH11" href="sensor_temp_umidade.html"/>
         <link rel="prev" title="Estrutura da Internet das Coisas" href="estruturaIoT.html"/> 
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.0.1
+                0.0.2
               </div>
             
           
@@ -99,10 +99,21 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">Implementação da Estrutura da Internet das Coisas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#implementacao-no-gateway">Implementação Nó Gateway</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#implementacao-no-sensor">Implementação Nó Sensor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#implementacao-no-atuador">Implementação Nó Atuador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#implementacao-no-sensor">Implementação Nó Sensor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sensor_temp_umidade.html">     Sensor de Temperatura e umidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensor_luminosidade.html">     Sensor de Luminosidade</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#implementacao-no-atuador">Implementação Nó Atuador</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="atuador_servo_motor.html">     Atuador Servo Motor</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="#implementacao-no-repetidor">Implementação Nó Repetidor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#implementacao-no-controlador">Implementação Nó Controlador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#implementacao-no-controlador">Implementação Nó Controlador</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pimatic.html">     Controlador Pimatic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mycontroller.html">     Controlador Mycontroller.org</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="primeiro_exemplo.html">     Exemplo</a></li>
@@ -152,27 +163,471 @@
             
   <div class="section" id="implementacao-da-estrutura-da-internet-das-coisas">
 <h1>Implementação da Estrutura da Internet das Coisas<a class="headerlink" href="#implementacao-da-estrutura-da-internet-das-coisas" title="Permalink to this headline">¶</a></h1>
-<p>dasdasdasdasdasdasdasdasdasdasd</p>
+<p>Para a implementação da estrutura de uma rede IoT devemos construir um nó gateway, um controlador e nós finais (Sensores e Atuadores).</p>
+<p>O rádio nRF24l01+ se comunica com Arduino via interface SPI. O rádio deve ser alimentado com uma tensão de 3.3 volts.</p>
+<p>Como o radio possui conector de 8 pinos não é possível conecta-lo a protoboard. Então devemos utilizar conectores macho-fêmea, como ilustra a Figura 3, para fazer ligação ou construir um shield para adaptação do módulo.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/gateway.png"><img alt="map to buried treasure" src="_images/gateway.png" style="width: 514.8px; height: 622.8px;" /></a>
+<p class="caption"><span class="caption-text">Figura 1: Conectando nRF24l01 no Arduino.</span></p>
+</div>
+<p>Os próximos tópicos descrevem detalhes  para construção de cada tipo de nó.</p>
 </div>
 <div class="section" id="implementacao-no-gateway">
 <h1>Implementação Nó Gateway<a class="headerlink" href="#implementacao-no-gateway" title="Permalink to this headline">¶</a></h1>
-<p>blabla</p>
+<p>Neste tópico vamos demostrar a contrução de nó gateway, que como vimos é responsável pela comunicação entre os nós finais e o controlador.</p>
+<p>Para implementação deste nó devemos conectar o rádio nRf24l01+ no arduino e utilizarmos o código:</p>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151</pre></div></td><td class="code"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * The MySensors Arduino library handles the wireless radio link and protocol</span>
+<span class="cm"> * between your home built sensors/actuators and HA controller of choice.</span>
+<span class="cm"> * The sensors forms a self healing radio network with optional repeaters. Each</span>
+<span class="cm"> * repeater and gateway builds a routing tables in EEPROM which keeps track of the</span>
+<span class="cm"> * network topology allowing messages to be routed to nodes.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Created by Henrik Ekblad &lt;henrik.ekblad@mysensors.org&gt;</span>
+<span class="cm"> * Copyright (C) 2013-2015 Sensnology AB</span>
+<span class="cm"> * Full contributor list: https://github.com/mysensors/Arduino/graphs/contributors</span>
+<span class="cm"> *</span>
+<span class="cm"> * Documentation: http://www.mysensors.org</span>
+<span class="cm"> * Support Forum: http://forum.mysensors.org</span>
+<span class="cm"> *</span>
+<span class="cm"> * This program is free software; you can redistribute it and/or</span>
+<span class="cm"> * modify it under the terms of the GNU General Public License</span>
+<span class="cm"> * version 2 as published by the Free Software Foundation.</span>
+<span class="cm"> *</span>
+<span class="cm"> *******************************</span>
+<span class="cm"> *</span>
+<span class="cm"> * DESCRIPTION</span>
+<span class="cm"> * The ArduinoGateway prints data received from sensors on the serial link. </span>
+<span class="cm"> * The gateway accepts input on seral which will be sent out on radio network.</span>
+<span class="cm"> *</span>
+<span class="cm"> * The GW code is designed for Arduino Nano 328p / 16MHz</span>
+<span class="cm"> *</span>
+<span class="cm"> * Wire connections (OPTIONAL):</span>
+<span class="cm"> * - Inclusion button should be connected between digital pin 3 and GND  </span>
+<span class="cm"> * - RX/TX/ERR leds need to be connected between +5V (anode) and digital pin 6/5/4 with resistor 270-330R in a series</span>
+<span class="cm"> *</span>
+<span class="cm"> * LEDs (OPTIONAL):</span>
+<span class="cm"> * - To use the feature, uncomment WITH_LEDS_BLINKING in MyConfig.h</span>
+<span class="cm"> * - RX (green) - blink fast on radio message recieved. In inclusion mode will blink fast only on presentation recieved</span>
+<span class="cm"> * - TX (yellow) - blink fast on radio message transmitted. In inclusion mode will blink slowly</span>
+<span class="cm"> * - ERR (red) - fast blink on error during transmission error or recieve crc error </span>
+<span class="cm"> * </span>
+<span class="cm"> */</span>
+
+<span class="cp">#define NO_PORTB_PINCHANGES  </span>
+
+<span class="cp">#include &lt;MySigningNone.h&gt;</span>
+<span class="cp">#include &lt;MyTransportRFM69.h&gt;</span>
+<span class="cp">#include &lt;MyTransportNRF24.h&gt;</span>
+<span class="cp">#include &lt;MyHwATMega328.h&gt;</span>
+<span class="cp">#include &lt;MySigningAtsha204Soft.h&gt;</span>
+<span class="cp">#include &lt;MySigningAtsha204.h&gt;</span>
+
+<span class="cp">#include &lt;SPI.h&gt;  </span>
+<span class="cp">#include &lt;MyParserSerial.h&gt;  </span>
+<span class="cp">#include &lt;MySensor.h&gt;  </span>
+<span class="cp">#include &lt;stdarg.h&gt;</span>
+<span class="cp">#include &lt;PinChangeInt.h&gt;</span>
+<span class="cp">#include &quot;GatewayUtil.h&quot;</span>
+
+<span class="cp">#define INCLUSION_MODE_TIME 1 </span><span class="c1">// Number of minutes inclusion mode is enabled</span>
+<span class="cp">#define INCLUSION_MODE_PIN  3 </span><span class="c1">// Definição do pino digital para botão</span>
+<span class="cp">#define RADIO_ERROR_LED_PIN 4  </span><span class="c1">// Pino do LED de erro</span>
+<span class="cp">#define RADIO_RX_LED_PIN    6  </span><span class="c1">// Pino do LED de recebimento</span>
+<span class="cp">#define RADIO_TX_LED_PIN    5  </span><span class="c1">// Pino do LED de transmissão</span>
+
+<span class="c1">// NRFRF24L01 radio driver (transmissão de baixa potência) </span>
+<span class="n">MyTransportNRF24</span> <span class="nf">transport</span><span class="p">(</span><span class="n">RF24_CE_PIN</span><span class="p">,</span> <span class="n">RF24_CS_PIN</span><span class="p">,</span> <span class="n">RF24_PA_LEVEL_GW</span><span class="p">);</span>
+<span class="c1">//MyTransportRFM69 transport;</span>
+
+<span class="c1">// Definição do tipo do Hardware(Microcontrolador) </span>
+<span class="n">MyHwATMega328</span> <span class="n">hw</span><span class="p">;</span>
+
+<span class="c1">// Definição e criação do argumento gw do tipo MySensor a partir do parâmetro WITH_LEDS_BLINKING de MyConfig.h</span>
+<span class="cp">#ifdef WITH_LEDS_BLINKING</span>
+<span class="n">MySensor</span> <span class="nf">gw</span><span class="p">(</span><span class="n">transport</span><span class="p">,</span> <span class="n">hw</span> <span class="cm">/*, signer*/</span><span class="p">,</span> <span class="n">RADIO_RX_LED_PIN</span><span class="p">,</span> <span class="n">RADIO_TX_LED_PIN</span><span class="p">,</span> <span class="n">RADIO_ERROR_LED_PIN</span><span class="p">);</span>
+<span class="cp">#else</span>
+<span class="n">MySensor</span> <span class="nf">gw</span><span class="p">(</span><span class="n">transport</span><span class="p">,</span> <span class="n">hw</span> <span class="cm">/*, signer*/</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+<span class="kt">char</span> <span class="n">inputString</span><span class="p">[</span><span class="n">MAX_RECEIVE_LENGTH</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>    <span class="c1">// String para manter comandos de entrada serial/ethernet</span>
+<span class="kt">int</span> <span class="n">inputPos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">boolean</span> <span class="n">commandComplete</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>  <span class="c1">// Se a string está completa</span>
+
+<span class="kt">void</span> <span class="nf">parseAndSend</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">commandBuffer</span><span class="p">);</span>
+
+<span class="c1">// Função para saída serial</span>
+<span class="kt">void</span> <span class="nf">output</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">fmt</span><span class="p">,</span> <span class="p">...</span> <span class="p">)</span> <span class="p">{</span>
+   <span class="kt">va_list</span> <span class="n">args</span><span class="p">;</span>
+   <span class="n">va_start</span> <span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">fmt</span> <span class="p">);</span>
+   <span class="n">vsnprintf_P</span><span class="p">(</span><span class="n">serialBuffer</span><span class="p">,</span> <span class="n">MAX_SEND_LENGTH</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">args</span><span class="p">);</span>
+   <span class="n">va_end</span> <span class="p">(</span><span class="n">args</span><span class="p">);</span>
+   <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">serialBuffer</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Função de configuração</span>
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span>  
+<span class="p">{</span> 
+  <span class="n">gw</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">incomingMessage</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">true</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="n">setupGateway</span><span class="p">(</span><span class="n">INCLUSION_MODE_PIN</span><span class="p">,</span> <span class="n">INCLUSION_MODE_TIME</span><span class="p">,</span> <span class="n">output</span><span class="p">);</span>
+
+  <span class="c1">// Adicionando interrupção para inclusão de pino.</span>
+  <span class="n">PCintPort</span><span class="o">::</span><span class="n">attachInterrupt</span><span class="p">(</span><span class="n">pinInclusion</span><span class="p">,</span> <span class="n">startInclusionInterrupt</span><span class="p">,</span> <span class="n">RISING</span><span class="p">);</span>
+
+
+  <span class="c1">// Enviar mensagem da inicialização serial.</span>
+  <span class="n">serial</span><span class="p">(</span><span class="n">PSTR</span><span class="p">(</span><span class="s">&quot;0;0;%d;0;%d;Gateway startup complete.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">),</span>  <span class="n">C_INTERNAL</span><span class="p">,</span> <span class="n">I_GATEWAY_READY</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span>  
+<span class="p">{</span> 
+  <span class="n">gw</span><span class="p">.</span><span class="n">process</span><span class="p">();</span>
+
+  <span class="n">checkButtonTriggeredInclusion</span><span class="p">();</span>
+  <span class="n">checkInclusionFinished</span><span class="p">();</span>
+  
+  <span class="c1">// Verifica se um comando serial foi emitido</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">commandComplete</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Comando serial tentará ser enviado ao atuador</span>
+    <span class="n">parseAndSend</span><span class="p">(</span><span class="n">gw</span><span class="p">,</span> <span class="n">inputString</span><span class="p">);</span>
+    <span class="n">commandComplete</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>  
+    <span class="n">inputPos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="cm">/*</span>
+<span class="cm">  SerialEvent ocorre sempre que for acionado o pino de</span>
+<span class="cm"> recebimento(RX). Esta rotina é executada sempre que a</span>
+<span class="cm"> função loop() for executada, portanto a resposta pode</span>
+<span class="cm"> sofrer atraso.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">serialEvent</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">())</span> <span class="p">{</span>
+    <span class="c1">// Pega o novo byte:</span>
+    <span class="kt">char</span> <span class="n">inChar</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span> 
+    <span class="c1">// se o caractere de entrada é uma nova linha, gere uma flag (sinalizador).</span>
+    <span class="c1">// tratamento no loop principal</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">inputPos</span><span class="o">&lt;</span><span class="n">MAX_RECEIVE_LENGTH</span><span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">commandComplete</span><span class="p">)</span> <span class="p">{</span> 
+      <span class="k">if</span> <span class="p">(</span><span class="n">inChar</span> <span class="o">==</span> <span class="sc">&#39;\n&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">inputString</span><span class="p">[</span><span class="n">inputPos</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">commandComplete</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// adicionando uma string de entrada (inputString):</span>
+        <span class="n">inputString</span><span class="p">[</span><span class="n">inputPos</span><span class="p">]</span> <span class="o">=</span> <span class="n">inChar</span><span class="p">;</span>
+        <span class="n">inputPos</span><span class="o">++</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+       <span class="c1">// Mensagens antigas são deletadas. </span>
+        <span class="n">inputPos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+
+
+</pre></div>
+</td></tr></table></div>
 </div>
 <div class="section" id="implementacao-no-sensor">
 <h1>Implementação Nó Sensor<a class="headerlink" href="#implementacao-no-sensor" title="Permalink to this headline">¶</a></h1>
-<p>blabla</p>
+<p>A implementação de nós sensores consiste básicamente na conexão de arduino com o rádio nRF24l01+ e a ligação do sensor desejado. A Figura 1 ilustra a ligação do arduino com o nRF24l01 a partir desse ligação deve-se adaptar para adicionar o sensor. Nos subtópicos temos a implementação de alguns sensores.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sensor_temp_umidade.html">     Sensor de Temperatura e umidade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sensor_luminosidade.html">     Sensor de Luminosidade</a></li>
+</ul>
+</div>
 </div>
 <div class="section" id="implementacao-no-atuador">
 <h1>Implementação Nó Atuador<a class="headerlink" href="#implementacao-no-atuador" title="Permalink to this headline">¶</a></h1>
-<p>blabla</p>
+<p>Os nós atuadores são responsáveis pela interação com o ambiente, são esses nós que realizam ações sobre os meios externos. Para implementação de um nó atuador devemos primeiro conectar o rádio no arduino, como ilustra a Figura 1 e depois devemos adicionar o atuador. Nos subtópicos temos o exemplo da implementação de alguns atuadores.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="atuador_servo_motor.html">     Atuador Servo Motor</a></li>
+</ul>
+</div>
 </div>
 <div class="section" id="implementacao-no-repetidor">
 <h1>Implementação Nó Repetidor<a class="headerlink" href="#implementacao-no-repetidor" title="Permalink to this headline">¶</a></h1>
-<p>blabla</p>
+<p>Quando a distancia entre dois nós é maior que a distancia de alcance do rádio é necessário a implementação de um nó repetidor, esse nó utiliza apenas um arduino e um rádio, a comunicação do arduino com o rádio é feita como na Figura 1. Abaixo segue o código utilizado para o nó repetidor.</p>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57</pre></div></td><td class="code"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * The MySensors Arduino library handles the wireless radio link and protocol</span>
+<span class="cm"> * between your home built sensors/actuators and HA controller of choice.</span>
+<span class="cm"> * The sensors forms a self healing radio network with optional repeaters. Each</span>
+<span class="cm"> * repeater and gateway builds a routing tables in EEPROM which keeps track of the</span>
+<span class="cm"> * network topology allowing messages to be routed to nodes.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Created by Henrik Ekblad &lt;henrik.ekblad@mysensors.org&gt;</span>
+<span class="cm"> * Copyright (C) 2013-2015 Sensnology AB</span>
+<span class="cm"> * Full contributor list: https://github.com/mysensors/Arduino/graphs/contributors</span>
+<span class="cm"> *</span>
+<span class="cm"> * Documentation: http://www.mysensors.org</span>
+<span class="cm"> * Support Forum: http://forum.mysensors.org</span>
+<span class="cm"> *</span>
+<span class="cm"> * This program is free software; you can redistribute it and/or</span>
+<span class="cm"> * modify it under the terms of the GNU General Public License</span>
+<span class="cm"> * version 2 as published by the Free Software Foundation.</span>
+<span class="cm"> *</span>
+<span class="cm"> *******************************</span>
+<span class="cm"> *</span>
+<span class="cm"> * REVISION HISTORY</span>
+<span class="cm"> * Version 1.0 - Henrik Ekblad</span>
+<span class="cm"> * </span>
+<span class="cm"> * DESCRIPTION</span>
+<span class="cm"> * Example sketch showing how to create a node thay repeates messages</span>
+<span class="cm"> * from nodes far from gateway back to gateway. </span>
+<span class="cm"> * It is important that nodes that has enabled repeater mode calls  </span>
+<span class="cm"> * process() frequently. Repeaters should never sleep. </span>
+<span class="cm"> */</span>
+
+<span class="c1">// Enable debug prints to serial monitor</span>
+<span class="cp">#define MY_DEBUG </span>
+
+<span class="c1">// Enable and select radio type attached</span>
+<span class="cp">#define MY_RADIO_NRF24</span>
+<span class="c1">//#define MY_RADIO_RFM69</span>
+
+<span class="c1">// Enabled repeater feature for this node</span>
+<span class="cp">#define MY_REPEATER_FEATURE</span>
+
+<span class="cp">#include &lt;SPI.h&gt;</span>
+<span class="cp">#include &lt;MySensors.h&gt;</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">presentation</span><span class="p">()</span>  
+<span class="p">{</span>  
+  <span class="c1">//Send the sensor node sketch version information to the gateway</span>
+  <span class="n">sendSketchInfo</span><span class="p">(</span><span class="s">&quot;Repeater Node&quot;</span><span class="p">,</span> <span class="s">&quot;1.0&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> 
+<span class="p">{</span>
+<span class="p">}</span>
+
+</pre></div>
+</td></tr></table></div>
 </div>
 <div class="section" id="implementacao-no-controlador">
 <h1>Implementação Nó Controlador<a class="headerlink" href="#implementacao-no-controlador" title="Permalink to this headline">¶</a></h1>
-<p>blalbva</p>
+<p>O nó controlador é responsável pela interface entre a rede contruida e a Internet, existem várias opções de controladores disponíveis, neste material utilizamos o MyController.org ou o Pimatic. Ambos podem ser utilizados em um computador pessoal ou até mesmo na raspberry ou na beaglebone.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pimatic.html">     Controlador Pimatic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mycontroller.html">     Controlador Mycontroller.org</a></li>
+</ul>
+</div>
+<p>Uma lista de controladores com suporte para a biblioteca mysensors esta disponível em <a class="reference external" href="https://www.mysensors.org/controller/">https://www.mysensors.org/controller/</a>.</p>
 </div>
 
 
@@ -182,7 +637,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="primeiro_exemplo.html" class="btn btn-neutral float-right" title="Exemplo" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sensor_temp_umidade.html" class="btn btn-neutral float-right" title="Sensor de Temperatura e Umidade - DTH11" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="estruturaIoT.html" class="btn btn-neutral" title="Estrutura da Internet das Coisas" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -194,7 +649,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Douglas Lohmann.
+        &copy; Copyright 2016, Douglas Lohmann, Cezar Bertelli.
 
     </p>
   </div>
@@ -216,7 +671,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.1',
+            VERSION:'0.0.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -50,14 +50,12 @@ A Internet pode ser dividida em três fases. A primeira fase é a Internet como 
 Processo de desenvolvimento de software
 =======================================
 
-	- engenharia de software
-	- requisitos
-	- scrum 
+Para começarmos o desenvolvimento de sistema de software exitem vários métodos e ferramentas que auxiliam no controle do desenvolvimento do projeto, neste trabalho utilizamos o método kanban, que é uma metódo ágil de desenvolvimento de software baseado nas práticas Lean, e tem como objetivo otimizar o processo de desenvolvimento de software. Para auxiliar na utilização desse metódo vamos usar a ferramenta Waffle.io. 
 
-		Scrum board disponível em:
+Para contrução da casa devemos em primeiro momento realizar um levantamento dos requisitos necessário para que está atenda todas as necessidades desejadas, feito o levantamento dos requisitos dividimos estes em tarefas e as distribuimos no Kanban Board. 
+
+		Board disponível em:
 		https://waffle.io/lohmanndouglas/smarthouse/join
-
-	- diagrama de classes
 
 Hardware
 =======================================
@@ -70,9 +68,27 @@ Hardware
 Arduino 
 =======================================
 
-	- Hardware
-	- IDE
-	- MySensors
+Arduino - https://www.arduino.cc/en/Guide/Introduction - é uma plataforma de prototipagem de código aberto baseada na fácil utilização do software e hardware. As placas Arduino são capazes de efetuarem leitura de uma entrada (sensores) e transformar em uma de saída (Atuadores). O projeto Arduino nasceu no Ivrea Interaction Design Institute como uma ferramenta fácil para prototipagem rápida, destinado a estudantes sem conhecimento aprofundado em eletrônica e programação. 
+
+A plataforma Arduino possui uma IDE para a programação e para gravar códigos na placa, a IDE está possui suporte a Linux, Mac e Windows. 
+
+Existem diversas placas de hardware Arduino, sendo a mais comum a Arduino Uno. As placas diferem basicamente no microcontrolador embutido, no número de entradas/saídas, na frequência de processamento e entre outras configurações.
+
+Neste Material vamos utilizar o Arduino Uno por ser facilmente encontrado no mercado e apresentar baixo custo de aquisição se comparado com outras plataformas de hardware.
+
+O Arduino Uno - https://www.arduino.cc/en/Main/ArduinoBoardUno - opera com uma velocidade de clock de 16 MHz, possui 14 pinos de entrada e saída digitais e 6 pinos de entrada e saída analógica, memória flash 32 KB (0.5 KB usados pelo Bootloader), memória SRAM de 2 KB e 1 KB de memória EEPROM. 
+
+A placa pode ser alimentada pela conexão USB ou por uma fonte de alimentação externa. Para alimentação externa é utilizado um conector Jack com positivo no centro, sendo que a placa suporta alimentação de 6 à 20 volts. Porém, é recomendado que a fonte de alimentação externa possua tensão entre 7 e 12 volts. 
+
+A Figura 1 ilustra o Arduino Uno utilizado neste projeto, ele tem 14 pinos de entradas/saídas digitais. Alguns desses pinos possuem funções especificas como PWM (pinos 3, 5, 6, 9, 10 e 11 ), comunicação serial (pinos 0 e 1) e interrupção externa (pinos 2 e 3).
+Para interface com o mundo analógico, a placa Arduino UNO possui 6 entradas, onde cada uma tem a resolução de 10 bits.
+
+.. figure:: arduino.jpg
+   :scale: 60%
+   :align: center
+   :alt: map to buried treasure
+
+   Figura 1: Arduino Uno.
 
 Estrutura IoT
 =======================================
@@ -107,8 +123,8 @@ Estrutura da Casa Inteligente
 
 O contexto deste projeto, pode ser muitas vezes considerado amplo, pois o mesmo gera aplicações em praticamente qualquer espaço e necessidade apresentada em uma casa. Para que fosse possível obter resultados, foi necessário focar em alguns objetivos mais específicos e, a partir destes, criar soluções com a utilização de arduíno e outros tipos de componentes.
 
-	- inserir planta da casa
-	- inserir planta da casa com sensores
+	- Planta da casa
+	- Planta da casa com sensores
 	- estorias
 
 Abaixo temos alguns exemplos de estórias ja implementadas. 

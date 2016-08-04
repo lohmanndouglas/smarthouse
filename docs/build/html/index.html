@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Sobre o Projeto &mdash; smart-house 0.0.1 documentation</title>
+  <title>Sobre o Projeto &mdash; smart-house 0.0.2 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="smart-house 0.0.1 documentation" href="#"/>
+    <link rel="top" title="smart-house 0.0.2 documentation" href="#"/>
         <link rel="next" title="Licença" href="license.html"/> 
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.0.1
+                0.0.2
               </div>
             
           
@@ -194,22 +194,11 @@ Licença.</p>
 </div>
 <div class="section" id="processo-de-desenvolvimento-de-software">
 <h1>Processo de desenvolvimento de software<a class="headerlink" href="#processo-de-desenvolvimento-de-software" title="Permalink to this headline">¶</a></h1>
+<p>Para começarmos o desenvolvimento de sistema de software exitem vários métodos e ferramentas que auxiliam no controle do desenvolvimento do projeto, neste trabalho utilizamos o método kanban, que é uma metódo ágil de desenvolvimento de software baseado nas práticas Lean, e tem como objetivo otimizar o processo de desenvolvimento de software. Para auxiliar na utilização desse metódo vamos usar a ferramenta Waffle.io.</p>
+<p>Para contrução da casa devemos em primeiro momento realizar um levantamento dos requisitos necessário para que está atenda todas as necessidades desejadas, feito o levantamento dos requisitos dividimos estes em tarefas e as distribuimos no Kanban Board.</p>
 <blockquote>
-<div><ul>
-<li><p class="first">engenharia de software</p>
-</li>
-<li><p class="first">requisitos</p>
-</li>
-<li><p class="first">scrum</p>
-<blockquote>
-<div><p>Scrum board disponível em:
-<a class="reference external" href="https://waffle.io/lohmanndouglas/smarthouse/join">https://waffle.io/lohmanndouglas/smarthouse/join</a></p>
-</div></blockquote>
-</li>
-<li><p class="first">diagrama de classes</p>
-</li>
-</ul>
-</div></blockquote>
+<div>Board disponível em:
+<a class="reference external" href="https://waffle.io/lohmanndouglas/smarthouse/join">https://waffle.io/lohmanndouglas/smarthouse/join</a></div></blockquote>
 </div>
 <div class="section" id="hardware">
 <h1>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h1>
@@ -224,13 +213,18 @@ Licença.</p>
 </div>
 <div class="section" id="arduino">
 <h1>Arduino<a class="headerlink" href="#arduino" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><ul class="simple">
-<li>Hardware</li>
-<li>IDE</li>
-<li>MySensors</li>
-</ul>
-</div></blockquote>
+<p>Arduino - <a class="reference external" href="https://www.arduino.cc/en/Guide/Introduction">https://www.arduino.cc/en/Guide/Introduction</a> - é uma plataforma de prototipagem de código aberto baseada na fácil utilização do software e hardware. As placas Arduino são capazes de efetuarem leitura de uma entrada (sensores) e transformar em uma de saída (Atuadores). O projeto Arduino nasceu no Ivrea Interaction Design Institute como uma ferramenta fácil para prototipagem rápida, destinado a estudantes sem conhecimento aprofundado em eletrônica e programação.</p>
+<p>A plataforma Arduino possui uma IDE para a programação e para gravar códigos na placa, a IDE está possui suporte a Linux, Mac e Windows.</p>
+<p>Existem diversas placas de hardware Arduino, sendo a mais comum a Arduino Uno. As placas diferem basicamente no microcontrolador embutido, no número de entradas/saídas, na frequência de processamento e entre outras configurações.</p>
+<p>Neste Material vamos utilizar o Arduino Uno por ser facilmente encontrado no mercado e apresentar baixo custo de aquisição se comparado com outras plataformas de hardware.</p>
+<p>O Arduino Uno - <a class="reference external" href="https://www.arduino.cc/en/Main/ArduinoBoardUno">https://www.arduino.cc/en/Main/ArduinoBoardUno</a> - opera com uma velocidade de clock de 16 MHz, possui 14 pinos de entrada e saída digitais e 6 pinos de entrada e saída analógica, memória flash 32 KB (0.5 KB usados pelo Bootloader), memória SRAM de 2 KB e 1 KB de memória EEPROM.</p>
+<p>A placa pode ser alimentada pela conexão USB ou por uma fonte de alimentação externa. Para alimentação externa é utilizado um conector Jack com positivo no centro, sendo que a placa suporta alimentação de 6 à 20 volts. Porém, é recomendado que a fonte de alimentação externa possua tensão entre 7 e 12 volts.</p>
+<p>A Figura 1 ilustra o Arduino Uno utilizado neste projeto, ele tem 14 pinos de entradas/saídas digitais. Alguns desses pinos possuem funções especificas como PWM (pinos 3, 5, 6, 9, 10 e 11 ), comunicação serial (pinos 0 e 1) e interrupção externa (pinos 2 e 3).
+Para interface com o mundo analógico, a placa Arduino UNO possui 6 entradas, onde cada uma tem a resolução de 10 bits.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/arduino.jpg"><img alt="map to buried treasure" src="_images/arduino.jpg" style="width: 360.0px; height: 360.0px;" /></a>
+<p class="caption"><span class="caption-text">Figura 1: Arduino Uno.</span></p>
+</div>
 </div>
 <div class="section" id="estrutura-iot">
 <h1>Estrutura IoT<a class="headerlink" href="#estrutura-iot" title="Permalink to this headline">¶</a></h1>
@@ -257,10 +251,21 @@ citados nos tópicos anteriores.</p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html">Implementação da Estrutura da Internet das Coisas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-gateway">Implementação Nó Gateway</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-sensor">Implementação Nó Sensor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-atuador">Implementação Nó Atuador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-sensor">Implementação Nó Sensor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sensor_temp_umidade.html">     Sensor de Temperatura e umidade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensor_luminosidade.html">     Sensor de Luminosidade</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-atuador">Implementação Nó Atuador</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="atuador_servo_motor.html">     Atuador Servo Motor</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-repetidor">Implementação Nó Repetidor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-controlador">Implementação Nó Controlador</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-controlador">Implementação Nó Controlador</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pimatic.html">     Controlador Pimatic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mycontroller.html">     Controlador Mycontroller.org</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div></blockquote>
@@ -273,8 +278,8 @@ inteligente no formato de estórias e assim realizarmos a construção do sistem
 <p>O contexto deste projeto, pode ser muitas vezes considerado amplo, pois o mesmo gera aplicações em praticamente qualquer espaço e necessidade apresentada em uma casa. Para que fosse possível obter resultados, foi necessário focar em alguns objetivos mais específicos e, a partir destes, criar soluções com a utilização de arduíno e outros tipos de componentes.</p>
 <blockquote>
 <div><ul class="simple">
-<li>inserir planta da casa</li>
-<li>inserir planta da casa com sensores</li>
+<li>Planta da casa</li>
+<li>Planta da casa com sensores</li>
 <li>estorias</li>
 </ul>
 </div></blockquote>
@@ -306,7 +311,7 @@ inteligente no formato de estórias e assim realizarmos a construção do sistem
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Douglas Lohmann.
+        &copy; Copyright 2016, Douglas Lohmann, Cezar Bertelli.
 
     </p>
   </div>
@@ -328,7 +333,7 @@ inteligente no formato de estórias e assim realizarmos a construção do sistem
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.1',
+            VERSION:'0.0.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -31,12 +31,12 @@ Na biblioteca MySensors exitem tres implementações de Gateway, o Ethernet Gate
 Nó Sensor
 ===========
 
-blabla
+Este tipo de nó é responsavel pela leitura de dados do meio externo e realizar a comunicação com o arduino. Sensor de temperatura, umidade e luminosidade são alguns exemplos de sensores. 
 
 Nó Atuador
 ===========
 
-blabla
+Nós atuadores são aqueles que realizam alguma ação no ambiente, um servo motor por exemplo é um nó atuador, podendo ser utilzado para abir uma janela na casa ou mover algum objeto. 
 
 Nó Repetidor
 ============

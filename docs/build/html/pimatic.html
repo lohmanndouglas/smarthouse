@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; smart-house 0.0.2 documentation</title>
+  <title>Pimatic &mdash; smart-house 0.0.2 documentation</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="smart-house 0.0.2 documentation" href="index.html"/> 
+    <link rel="top" title="smart-house 0.0.2 documentation" href="index.html"/>
+        <link rel="up" title="Implementação da Estrutura da Internet das Coisas" href="implementacaoIoT.html"/>
+        <link rel="next" title="Mycontroller.org" href="mycontroller.html"/>
+        <link rel="prev" title="Servo Motor" href="atuador_servo_motor.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -65,7 +68,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -94,13 +97,17 @@
 <li class="toctree-l1"><a class="reference internal" href="estruturaIoT.html#no-repetidor">Nó Repetidor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="estruturaIoT.html#no-controlador">Nó Controlador</a></li>
 </ul>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html">Implementação da Estrutura da Internet das Coisas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-gateway">Implementação Nó Gateway</a></li>
 <li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-sensor">Implementação Nó Sensor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-atuador">Implementação Nó Atuador</a></li>
 <li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-repetidor">Implementação Nó Repetidor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-controlador">Implementação Nó Controlador</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="implementacaoIoT.html#implementacao-no-controlador">Implementação Nó Controlador</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">     Controlador Pimatic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mycontroller.html">     Controlador Mycontroller.org</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="primeiro_exemplo.html">     Exemplo</a></li>
@@ -126,7 +133,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -134,8 +141,14 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li></li>
+          <li><a href="implementacaoIoT.html">Implementação da Estrutura da Internet das Coisas</a> &raquo;</li>
+      
+    <li>Pimatic</li>
       <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/pimatic.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
   </ul>
@@ -144,23 +157,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="pimatic">
+<h1>Pimatic<a class="headerlink" href="#pimatic" title="Permalink to this headline">¶</a></h1>
+<p>Pimatic - <a class="reference external" href="http://www.mysensors.org/controller/pimatic">http://www.mysensors.org/controller/pimatic</a> - é um framework de automação residencial que é executado no Node.js. Ele fornece uma plataforma extensível comum para controle de casa e tarefas de automação</p>
+<p>A configuração do Pimatic é realizada por meio de somente um arquivo, denominado config.json. Esse arquivo está no formato JSON e é dividido em quatro seções: Configurações (settings), Plugins, Dispositivos (devices) e Regras (Rules). A seguir, exemplos das quatro seções são apresentados.</p>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mycontroller.html" class="btn btn-neutral float-right" title="Mycontroller.org" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="atuador_servo_motor.html" class="btn btn-neutral" title="Servo Motor" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -198,7 +213,6 @@
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/searchtools.js"></script>
 
   
 
@@ -214,14 +228,7 @@
           SphinxRtdTheme.StickyNav.enable();
       });
   </script>
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>
