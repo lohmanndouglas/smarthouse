@@ -55,8 +55,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'smart-house'
-copyright = u'2016, Douglas Lohmann, Cezar Bertelli'
-author = u'Douglas Lohmann, Cezar Bertelli'
+copyright = u'2016, Douglas Lohmann'
+author = u'Douglas Lohmann'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
