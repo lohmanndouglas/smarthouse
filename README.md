@@ -1,4 +1,4 @@
-# smarthouse
+# Introdução à computação utilizando IoT no contexto de automação residencial 
 
 Toda documentação desse projeto está disponível online no [ReadTheDocs](http://smarthouse.readthedocs.org/en/latest/).
 
