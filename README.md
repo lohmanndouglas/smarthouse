@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/lohmanndouglas/smarthouse.png?label=ready&title=Ready)](https://waffle.io/lohmanndouglas/smarthouse)
 # Introdução à computação utilizando IoT no contexto de automação residencial 
 
 Toda documentação desse projeto está disponível online no [ReadTheDocs](http://smarthouse.readthedocs.org/en/latest/).
